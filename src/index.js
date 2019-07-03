@@ -9,9 +9,9 @@ import JSCanvas from "./canvas.js";
 function App() {
   return (
     <div className="App">
-      <h1>Awesome counter!</h1>
+      <h1>Counter</h1>
       <AddBox />
-      <h1>Awesome number generator!</h1>
+      <h1>Number generator</h1>
       <RandomButton />
     </div>
   );

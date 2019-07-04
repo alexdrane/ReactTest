@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import RandomButton from "./randomButton.js";
 import InputBox from "./box.js";
 import AddButton from "./adding.js";
+import MAthBox from "./MathBox.js";
 import "./styles.css";
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
       <RandomButton />
       <h1>InputBox</h1>
       <InputBox />
+      <h1>Calculator</h1>
+      <MAthBox />
     </div>
   );
 }

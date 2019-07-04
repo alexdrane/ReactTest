@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./styles.css";
+import styles from "./styling";
 
 function AddButton() {
   const [randomNumber, setRandomNumber] = React.useState(0);
@@ -14,8 +15,12 @@ function AddButton() {
 
   return (
     <>
-      <button onClick={onButtonPress}>{randomNumber}</button>
-      <button onClick={reset}>Reset Counter</button>
+      <button style={styles.button} onClick={onButtonPress}>
+        {randomNumber}
+      </button>
+      <button style={styles.button} onClick={reset}>
+        Reset Counter
+      </button>
     </>
   );
 }

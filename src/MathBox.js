@@ -2,6 +2,8 @@ import React from "react";
 
 import "./styles.css";
 
+import styles from "./styling";
+
 function MathBox() {
   const ops = ["+", "-", "x", "/"];
   const [operatorNum, setOperator] = React.useState(0);
@@ -47,11 +49,15 @@ function MathBox() {
 
   return (
     <>
-      <input id="Val1" />
-      <button onClick={scrollOp}>{ops[operatorNum]}</button>
-      <input id="Val2" />
-      <button onClick={CalculateAns}>=</button>
-      <input id="Out" />
+      <input style={styles.input} id="Val1" />
+      <button style={styles.button} onClick={scrollOp}>
+        {ops[operatorNum]}
+      </button>
+      <input style={styles.input} id="Val2" />
+      <button style={styles.button} onClick={CalculateAns}>
+        =
+      </button>
+      <input style={styles.input} id="Out" />
     </>
   );
 }

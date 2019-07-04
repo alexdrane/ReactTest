@@ -5,7 +5,7 @@ import "./styles.css";
 import styles from "./styling";
 
 function MathBox() {
-  const ops = ["+", "-", "x", "/"];
+  const ops = ["+", "-", "x", "/", "^"];
   const [operatorNum, setOperator] = React.useState(0);
 
   function scrollOp() {
@@ -40,6 +40,8 @@ function MathBox() {
         case "/":
           ans = int1 / int2;
           break;
+        case "^":
+          ans = Math.pow(int1, int2);
         default:
           break;
       }

@@ -2,22 +2,22 @@ import React from "react";
 
 import "./styles.css";
 
-function AddBox () {
-  const [randomNumber,setRandomNumber] = React.useState(0);
+function AddButton() {
+  const [randomNumber, setRandomNumber] = React.useState(0);
 
-  function onButtonPress(){
-    setRandomNumber(randomNumber+1);
+  function onButtonPress() {
+    setRandomNumber(randomNumber + 1);
   }
-  function reset(){
+  function reset() {
     setRandomNumber(0);
   }
-  
+
   return (
     <>
-    <button onClick = {onButtonPress}>{randomNumber}</button>
-    <button onClick = {reset}>Reset Counter</button>
+      <button onClick={onButtonPress}>{randomNumber}</button>
+      <button onClick={reset}>Reset Counter</button>
     </>
   );
 }
 
-export default AddBox;
+export default AddButton;

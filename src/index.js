@@ -1,18 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./canvas.js";
 import RandomButton from "./randomButton.js";
-import AddBox from "./adding.js";
+import InputBox from "./box.js";
+import AddButton from "./adding.js";
 import "./styles.css";
-import JSCanvas from "./canvas.js";
 
 function App() {
   return (
     <div className="App">
       <h1>Counter</h1>
-      <AddBox />
+      <AddButton />
       <h1>Number generator</h1>
       <RandomButton />
+      <h1>InputBox</h1>
+      <InputBox />
     </div>
   );
 }

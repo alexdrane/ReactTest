@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import "./styles.css";
 import { SectionWrapper, HeadButton } from "./styling.js";
 
@@ -12,7 +11,7 @@ function ToggleSection({ children, title }) {
 
   return (
     <SectionWrapper>
-      <HeadButton onClick={Toggle}>{title}</HeadButton>
+      <h2 onClick={Toggle}>{title}</h2>
       {state ? null : children}
     </SectionWrapper>
   );

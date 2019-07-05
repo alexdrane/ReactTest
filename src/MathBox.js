@@ -19,6 +19,7 @@ function MathBox() {
   const [operatorNum, setOperator] = React.useState(0);
   const [lh, setLh] = React.useState("");
   const [rh, setRh] = React.useState("");
+  const [prev, setPrev] = React.useState(0);
 
   function onLhChange(evt) {
     setLh(evt.target.value);
@@ -38,12 +39,13 @@ function MathBox() {
   }
 
   function CalculateAns() {
+    var error = false;
     var val1 = lh;
     var val2 = rh;
     var int1 = Number(val1);
     var int2 = Number(val2);
     if (Number.isNaN(int1) || Number.isNaN(int2)) {
-      return false;
+      error = "Must be numbers";
     } else {
       var ans = 0;
       switch (ops[operatorNum]) {
@@ -58,6 +60,11 @@ function MathBox() {
           break;
         case "/":
           ans = int1 / int2;
+          if (Number.isNaN(ans)) {
+            error = "You must include numbers";
+          } else if (ans === Infinity) {
+            error = "Cannot divide by zero";
+          }
           break;
         case "^":
           ans = Math.pow(int1, int2);
@@ -65,22 +72,24 @@ function MathBox() {
         default:
           break;
       }
-      return ans;
     }
+
+    return { ans, error };
   }
 
-  const ans = CalculateAns();
+  const { ans, error } = CalculateAns();
+
+  function newPrev() {
+    setPrev(ans);
+  }
 
   return (
     <>
       <NumberInput num={lh} value={lh} onChange={onLhChange} />
       <StyledButton onClick={scrollOp}>{ops[operatorNum]}</StyledButton>
       <NumberInput num={rh} value={rh} onChange={onRhChange} />
-      <StyledButton onClick={CalculateAns}>=</StyledButton>
-      <TrueInput
-        state={ans !== false}
-        value={ans === false ? "Must be numerical input" : ans}
-      />
+      <StyledButton onClick={newPrev}>=</StyledButton>
+      <TrueInput readOnly state={!error} value={error || ans} />
     </>
   );
 }

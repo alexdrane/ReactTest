@@ -37,17 +37,6 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const HeadButton = styled.button`
-  border-radius: 0;
-  border: 0 solid #004466;
-  padding: 10px 10px;
-  display: block;
-  margin: 0 auto 20px;
-  background-color: white;
-  font-size: 30px;
-  color: navy;
-`;
-
 export const StyledInput = styled.input`
   border-radius: 5px;
   border: 1px solid #004466;

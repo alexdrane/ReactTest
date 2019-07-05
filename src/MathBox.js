@@ -1,12 +1,32 @@
 import React from "react";
+import styled from "styled-components";
 
 import "./styles.css";
+import { StyledButton, StyledInput } from "./styling.js";
 
-import styles from "./styling";
+const NumberInput = styled(StyledInput)`
+  color: white;
+  background-color: ${props =>
+    Number.isNaN(Number(props.num)) ? "Red" : "Green"};
+`;
+
+const TrueInput = styled(StyledInput)`
+  background-color: ${props => (props.state ? "Green" : "Red")};
+`;
 
 function MathBox() {
   const ops = ["+", "-", "x", "/", "^"];
   const [operatorNum, setOperator] = React.useState(0);
+  const [lh, setLh] = React.useState("");
+  const [rh, setRh] = React.useState("");
+
+  function onLhChange(evt) {
+    setLh(evt.target.value);
+  }
+
+  function onRhChange(evt) {
+    setRh(evt.target.value);
+  }
 
   function scrollOp() {
     const len = ops.length;
@@ -18,13 +38,12 @@ function MathBox() {
   }
 
   function CalculateAns() {
-    var display = document.getElementById("Out");
-    var val1 = document.getElementById("Val1").value;
-    var val2 = document.getElementById("Val2").value;
+    var val1 = lh;
+    var val2 = rh;
     var int1 = Number(val1);
     var int2 = Number(val2);
     if (Number.isNaN(int1) || Number.isNaN(int2)) {
-      display.value = "Must be numerical input";
+      return false;
     } else {
       var ans = 0;
       switch (ops[operatorNum]) {
@@ -42,24 +61,26 @@ function MathBox() {
           break;
         case "^":
           ans = Math.pow(int1, int2);
+          break;
         default:
           break;
       }
-      display.value = ans;
+      return ans;
     }
   }
 
+  const ans = CalculateAns();
+
   return (
     <>
-      <input style={styles.input} id="Val1" />
-      <button style={styles.button} onClick={scrollOp}>
-        {ops[operatorNum]}
-      </button>
-      <input style={styles.input} id="Val2" />
-      <button style={styles.button} onClick={CalculateAns}>
-        =
-      </button>
-      <input style={styles.input} id="Out" />
+      <NumberInput num={lh} value={lh} onChange={onLhChange} />
+      <StyledButton onClick={scrollOp}>{ops[operatorNum]}</StyledButton>
+      <NumberInput num={rh} value={rh} onChange={onRhChange} />
+      <StyledButton onClick={CalculateAns}>=</StyledButton>
+      <TrueInput
+        state={ans !== false}
+        value={ans === false ? "Must be numerical input" : ans}
+      />
     </>
   );
 }

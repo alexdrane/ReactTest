@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./styles.css";
-import styles from "./styling";
+import { StyledButton, StyledInput } from "./styling";
 
 function InputBox() {
   const [userInput, setUserInput] = React.useState("");
@@ -19,14 +19,10 @@ function InputBox() {
 
   return (
     <>
-      <input style={styles.input} id="Box" />
-      <button style={styles.button} onClick={setText}>
-        Enter
-      </button>
-      <h2 style={styles.label}>{userInput}</h2>
-      <button style={styles.button} onClick={Clear}>
-        Clear
-      </button>
+      <StyledInput id="Box" />
+      <StyledButton onClick={setText}>Enter</StyledButton>
+      <h2>{userInput}</h2>
+      <StyledButton onClick={Clear}>Clear</StyledButton>
     </>
   );
 }

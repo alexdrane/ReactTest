@@ -1,26 +1,34 @@
 import React from "react";
+import styled from "styled-components";
 
 import "./styles.css";
-import styles from "./styling";
+import { StyledButton } from "./styling";
+
+const EvenOddButton = styled(StyledButton)`
+  &:hover {
+    background-color: ${props =>
+      props.number % 2 === 0 ? "#660000" : "#003399"};
+  }
+`;
 
 function AddButton() {
-  const [randomNumber, setRandomNumber] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
   function onButtonPress() {
-    setRandomNumber(randomNumber + 1);
+    setCount(count + 1);
   }
   function reset() {
-    setRandomNumber(0);
+    setCount(0);
   }
 
   return (
     <>
-      <button style={styles.button} onClick={onButtonPress}>
-        {randomNumber}
-      </button>
-      <button style={styles.button} onClick={reset}>
-        Reset Counter
-      </button>
+      <EvenOddButton number={count} onClick={onButtonPress}>
+        {count}
+      </EvenOddButton>
+      {count === 0 ? null : (
+        <StyledButton onClick={reset}>Reset Counter</StyledButton>
+      )}
     </>
   );
 }

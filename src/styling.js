@@ -1,24 +1,56 @@
 import "./styles.css";
-
+import styled from "styled-components";
 const font = "Calibri";
 
-const styles = {
-  button: {
-    backgroundColor: "white",
-    color: "navy",
-    borderRadius: 4,
-    fontFamily: font
-  },
-  label: {
-    fontWeight: "bold",
-    color: "navy",
-    fontFamily: font
-  },
-  input: {
-    borderRadius: 4,
-    color: "navy",
-    fontFamily: font
-  }
-};
+export const BodyWrapper = styled.div`
+  color: navy;
+  font-family: ${font};
+  margin: auto;
+  text-align: center;
+`;
 
-export default styles;
+export const Sticky = styled.div`
+  color: white;
+  background-color: #004466;
+  font-size: 30px;
+  font-family: ${font};
+  position: sticky;
+  padding: 10px 10px;
+  top: 10px;
+`;
+
+export const SectionWrapper = styled.div`
+  padding: 10px 0px;
+`;
+
+export const StyledButton = styled.button`
+  border-radius: 5px;
+  transition-duration: 0.4s;
+  border: 1px solid #004466;
+  padding: 4px 10px;
+  margin: 0 5px;
+
+  &:hover {
+    background-color: #004466;
+    color: white;
+    border: 1px solid black;
+  }
+`;
+
+export const HeadButton = styled.button`
+  border-radius: 0;
+  border: 0 solid #004466;
+  padding: 10px 10px;
+  display: block;
+  margin: 0 auto 20px;
+  background-color: white;
+  font-size: 30px;
+  color: navy;
+`;
+
+export const StyledInput = styled.input`
+  border-radius: 5px;
+  border: 1px solid #004466;
+  color: navy;
+  padding: 4px 10px;
+`;

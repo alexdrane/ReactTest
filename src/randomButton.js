@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./styles.css";
-import styles from "./styling";
+import { StyledButton } from "./styling";
 
 function randomNumberGenerator() {
   return Math.floor(Math.random() * 10000);
@@ -18,9 +18,7 @@ function RandomButton() {
 
   return (
     <>
-      <button style={styles.button} onClick={onButtonPress}>
-        {randomNumber}
-      </button>
+      <StyledButton onClick={onButtonPress}>{randomNumber}</StyledButton>
     </>
   );
 }
